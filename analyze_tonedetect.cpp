@@ -24,7 +24,6 @@
  * THE SOFTWARE.
  */
 
-#include <Arduino.h>
 #include "analyze_tonedetect.h"
 #include "utility/dspinst.h"
 

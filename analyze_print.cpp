@@ -24,7 +24,7 @@
  * THE SOFTWARE.
  */
 
-#include <Arduino.h>
+
 #include "analyze_print.h"
 
 #define STATE_IDLE          0  // doing nothing

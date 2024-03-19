@@ -29,8 +29,7 @@
 #ifndef biquad_coeffs_h_
 #define biquad_coeffs_h_
 
-#include <Arduino.h>     // github.com/PaulStoffregen/cores/blob/master/teensy4/Arduino.h
-#include <arm_math.h>    // github.com/PaulStoffregen/cores/blob/master/teensy4/arm_math.h
+#include "AudioPlatform.h"
 
 enum class BiquadType {
 	LOW_PASS, HIGH_PASS, BAND_PASS, NOTCH, ALL_PASS, PEAKING, LOW_SHELF, HIGH_SHELF

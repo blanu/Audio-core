@@ -25,7 +25,6 @@
  */
 
 
-#include <Arduino.h>
 #include "analyze_rms.h"
 #include "utility/dspinst.h"
 

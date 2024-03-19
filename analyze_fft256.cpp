@@ -24,7 +24,6 @@
  * THE SOFTWARE.
  */
 
-#include <Arduino.h>
 #include "analyze_fft256.h"
 #include "sqrt_integer.h"
 #include "utility/dspinst.h"
