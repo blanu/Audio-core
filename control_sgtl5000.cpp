@@ -24,7 +24,7 @@
  * THE SOFTWARE.
  */
 
-#include <Arduino.h>
+
 #include "control_sgtl5000.h"
 #include "Wire.h"
 
