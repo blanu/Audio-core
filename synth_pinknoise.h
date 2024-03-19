@@ -26,8 +26,7 @@
 
 #ifndef synth_pinknoise_h_
 #define synth_pinknoise_h_
-#include <Arduino.h>     // github.com/PaulStoffregen/cores/blob/master/teensy4/Arduino.h
-#include <AudioStream.h> // github.com/PaulStoffregen/cores/blob/master/teensy4/AudioStream.h
+#include "AudioPlatform.h"
 #include "utility/dspinst.h"
 
 class AudioSynthNoisePink : public AudioStream

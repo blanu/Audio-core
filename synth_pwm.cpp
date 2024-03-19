@@ -24,12 +24,8 @@
  * THE SOFTWARE.
  */
 
-#include <Arduino.h>
 #include "synth_pwm.h"
 #include "utility/dspinst.h"
-
-
-#if defined(__ARM_ARCH_7EM__)
 
 void AudioSynthWaveformPWM::update(void)
 {
@@ -92,14 +88,4 @@ void AudioSynthWaveformPWM::update(void)
 	transmit(block);
 	release(block);
 }
-
-#elif defined(KINETISL)
-
-void AudioSynthWaveformPWM::update(void)
-{
-	audio_block_t *block = receiveReadOnly();
-	if (block) release(block);
-}
-
-#endif
 

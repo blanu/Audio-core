@@ -24,7 +24,6 @@
  * THE SOFTWARE.
  */
 
-#include <Arduino.h>
 #include "synth_sine.h"
 #include "utility/dspinst.h"
 
@@ -52,11 +51,7 @@ void AudioSynthWaveformSine::update(void)
 				scale = (ph >> 8) & 0xFFFF;
 				val2 *= scale;
 				val1 *= 0x10000 - scale;
-#if defined(__ARM_ARCH_7EM__)
 				block->data[i] = multiply_32x32_rshift32(val1 + val2, magnitude);
-#elif defined(KINETISL)
-				block->data[i] = (((val1 + val2) >> 16) * magnitude) >> 16;
-#endif
 				ph += inc;
 			}
 			phase_accumulator = ph;
@@ -72,7 +67,6 @@ void AudioSynthWaveformSine::update(void)
 
 
 
-#if defined(__ARM_ARCH_7EM__)
 // High accuracy 11th order Taylor Series Approximation
 // input is 0 to 0xFFFFFFFF, representing 0 to 360 degree phase
 // output is 32 bit signed integer, top 25 bits should be very good
@@ -107,7 +101,6 @@ static int32_t taylor(uint32_t ph)
 
 void AudioSynthWaveformSineHires::update(void)
 {
-#if defined(__ARM_ARCH_7EM__)
 	audio_block_t *msw, *lsw;
 	uint32_t i, ph, inc;
 	int32_t val;
@@ -136,12 +129,10 @@ void AudioSynthWaveformSineHires::update(void)
 		}
 	}
 	phase_accumulator += phase_increment * AUDIO_BLOCK_SAMPLES;
-#endif
 }
 
 
 
-#if defined(__ARM_ARCH_7EM__)
 
 void AudioSynthWaveformSineModulated::update(void)
 {
@@ -205,15 +196,4 @@ void AudioSynthWaveformSineModulated::update(void)
 	release(block);
 }
 
-#elif defined(KINETISL)
-
-void AudioSynthWaveformSineModulated::update(void)
-{
-	audio_block_t *block;
-
-	block = receiveReadOnly();
-	if (block) release(block);
-}
-
-#endif
 
