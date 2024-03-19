@@ -26,14 +26,14 @@
 
 #ifndef synth_dc_h_
 #define synth_dc_h_
-#include <Arduino.h>     // github.com/PaulStoffregen/cores/blob/master/teensy4/Arduino.h
-#include <AudioStream.h> // github.com/PaulStoffregen/cores/blob/master/teensy4/AudioStream.h
+
+#include "AudioPlatform.h"
 #include "utility/dspinst.h"
 
 // compute (a - b) / c
 // handling 32 bit interger overflow at every step
 // without resorting to slow 64 bit math
-#if defined(__ARM_ARCH_7EM__)
+
 static inline int32_t substract_int32_then_divide_int32(int32_t a, int32_t b, int32_t c) __attribute__((always_inline, unused));
 static inline int32_t substract_int32_then_divide_int32(int32_t a, int32_t b, int32_t c)
 {
@@ -45,45 +45,6 @@ static inline int32_t substract_int32_then_divide_int32(int32_t a, int32_t b, in
  	if (__builtin_abs(c)<=1) return r;
  	return (a/c)-(b/c);
 }
-#else
-// compute (a - b) / c  ... handling 32 bit interger overflow without slow 64 bit math
-static inline int32_t substract_int32_then_divide_int32(int32_t a, int32_t b, int32_t c) __attribute__((always_inline, unused));
-static inline int32_t substract_int32_then_divide_int32(int32_t a, int32_t b, int32_t c)
-{
-	uint32_t diff;
-	uint8_t negative;
-
-	if (a >= 0) {
-		if (b >= 0) {
-			return (a - b) / c;  // no overflow if both a & b are positive
-		} else {
-			diff = a + (b * -1); // assumes 0x80000000 * -1 == 0x80000000
-			negative = 0;
-		}
-	} else {
-		if (b >= 0) {
-			diff = (a * -1) + b; // assumes 0x80000000 * -1 == 0x80000000
-			negative = 1;
-		} else {
-			return (a - b) / c;  // no overflow if both a & b are negative
-		}
-	}
-	if (c >= 0) {
-		diff = diff / (uint32_t)c;
-	} else {
-		diff = diff / (uint32_t)(c * -1);
-		negative ^= 1;
-	}
-	if (negative) {
-		if (diff > 0x7FFFFFFF) return 0x80000000;
-		return (int32_t)diff * -1;
-	} else {
-		if (diff > 0x7FFFFFFF) return 0x7FFFFFFF;
-		return (int32_t)diff;
-	}
-}
-
-#endif
 
 class AudioSynthWaveformDc : public AudioStream
 {
