@@ -24,7 +24,6 @@
  * THE SOFTWARE.
  */
 
-#include <Arduino.h>
 #include "effect_fade.h"
 #include "utility/dspinst.h"
 

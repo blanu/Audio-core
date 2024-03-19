@@ -35,10 +35,8 @@
 
 // https://forum.pjrc.com/threads/60488?p=271078&viewfull=1#post271078
 
-#include <Arduino.h>
 #include "filter_ladder.h"
 #include <math.h>
-#include "arm_math.h"
 #include <stdint.h>
 #define MOOG_PI ((float)3.14159265358979323846264338327950288)
 

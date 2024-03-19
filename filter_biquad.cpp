@@ -24,11 +24,8 @@
  * THE SOFTWARE.
  */
 
-#include <Arduino.h>
 #include "filter_biquad.h"
 #include "utility/dspinst.h"
-
-#if defined(__ARM_ARCH_7EM__)
 
 void AudioFilterBiquad::update(void)
 {
@@ -118,4 +115,3 @@ void AudioFilterBiquad::setCoefficients(uint32_t stage, const int *coefficients)
 {
 }
 
-#endif

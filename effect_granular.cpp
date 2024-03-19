@@ -21,7 +21,6 @@
  * SOFTWARE.
  */
 
-#include <Arduino.h>
 #include "effect_granular.h"
 
 void AudioEffectGranular::begin(int16_t *sample_bank_def, int16_t max_len_def)

@@ -25,7 +25,6 @@
 //  Combining two simple oscillators results in interesting new waveforms, 
 //  Combining white noise or dynamic incoming audio results in aggressive digital distortion.
  
-#include <Arduino.h>
 #include "effect_combine.h"
 
 void AudioEffectDigitalCombine::update(void)

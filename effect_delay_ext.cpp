@@ -24,7 +24,6 @@
  * THE SOFTWARE.
  */
 
-#include <Arduino.h>
 #include "effect_delay_ext.h"
 
 //#define INTERNAL_TEST
@@ -289,3 +288,4 @@ void AudioEffectDelayExternal::write(uint32_t offset, uint32_t count, const int1
 	}
 #endif
 }
+

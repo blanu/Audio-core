@@ -24,7 +24,6 @@
  * THE SOFTWARE.
  */
 
-#include <Arduino.h>
 #include "filter_variable.h"
 #include "utility/dspinst.h"
 
@@ -45,8 +44,6 @@
 // about 0.341% error to only 0.012% error, which probably makes
 // no audible difference.
 //#define IMPROVE_EXPONENTIAL_ACCURACY
-
-#if defined(__ARM_ARCH_7EM__)
 
 void AudioFilterStateVariable::update_fixed(const int16_t *in,
 	int16_t *lp, int16_t *bp, int16_t *hp)
@@ -224,17 +221,4 @@ void AudioFilterStateVariable::update(void)
 	return;
 }
 
-#elif defined(KINETISL)
-
-void AudioFilterStateVariable::update(void)
-{
-	audio_block_t *block;
-
-	block = receiveReadOnly(0);
-	if (block) release(block);
-	block = receiveReadOnly(1);
-	if (block) release(block);
-}
-
-#endif
 

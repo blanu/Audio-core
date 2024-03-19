@@ -24,7 +24,6 @@
  * THE SOFTWARE.
  */
 
-#include <Arduino.h>
 #include "effect_midside.h"
 
 void AudioEffectMidSide::update(void)
@@ -36,7 +35,6 @@ void AudioEffectMidSide::update(void)
 		if (blockb) release(blockb); // of the blocks is NULL then it's trouble anyway
 		return;
 	}
-#if defined(__ARM_ARCH_7EM__)
 	uint32_t a12, a34, b12, b34;
 	uint32_t *pa = (uint32_t *)(blocka->data);
 	uint32_t *pb = (uint32_t *)(blockb->data);
@@ -83,7 +81,6 @@ void AudioEffectMidSide::update(void)
 	}
 	transmit(blocka, 0); // mid (encoding) or  left (decoding)
 	transmit(blockb, 1); // side (encoding) or right (decoding)
-#endif
 	release(blocka);
 	release(blockb);
 }

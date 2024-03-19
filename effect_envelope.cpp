@@ -24,7 +24,6 @@
  * THE SOFTWARE.
  */
 
-#include <Arduino.h>
 #include "effect_envelope.h"
 
 #define STATE_IDLE	0
