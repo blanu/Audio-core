@@ -153,5 +153,3 @@ AudioAnalyzeToneDetect::operator bool()
 	// TODO: this should really remember if it's retuned true previously,
 	// so it can give a single true response each time a tone is seen.
 }
-
-
