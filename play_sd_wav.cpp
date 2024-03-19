@@ -24,7 +24,6 @@
  * THE SOFTWARE.
  */
 
-#include <Arduino.h>
 #include "play_sd_wav.h"
 #include "spi_interrupt.h"
 

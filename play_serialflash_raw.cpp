@@ -25,7 +25,6 @@
  * THE SOFTWARE.
  */
 
-#include <Arduino.h>
 #include "play_serialflash_raw.h"
 #include "spi_interrupt.h"
 
