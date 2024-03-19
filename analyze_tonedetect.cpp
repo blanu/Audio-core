@@ -28,8 +28,6 @@
 #include "analyze_tonedetect.h"
 #include "utility/dspinst.h"
 
-#if defined(__ARM_ARCH_7EM__)
-
 static inline int32_t multiply_32x32_rshift30(int32_t a, int32_t b) __attribute__((always_inline));
 static inline int32_t multiply_32x32_rshift30(int32_t a, int32_t b)
 {
@@ -157,23 +155,4 @@ AudioAnalyzeToneDetect::operator bool()
 	// so it can give a single true response each time a tone is seen.
 }
 
-
-#elif defined(KINETISL)
-
-void AudioAnalyzeToneDetect::update(void)
-{
-	audio_block_t *block;
-	block = receiveReadOnly();
-	if (block) release(block);
-}
-
-void AudioAnalyzeToneDetect::set_params(int32_t coef, uint16_t cycles, uint16_t len)
-{
-}
-
-float AudioAnalyzeToneDetect::read(void)
-{
-	return 0;
-}
-#endif
 

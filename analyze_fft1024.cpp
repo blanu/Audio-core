@@ -31,7 +31,6 @@
 
 
 // 140312 - PAH - slightly faster copy
-#if defined(__ARM_ARCH_7EM__)
 static void copy_to_fft_buffer(void *destination, const void *source)
 {
 	const uint16_t *src = (const uint16_t *)source;
@@ -55,7 +54,6 @@ static void apply_window_to_fft_buffer(void *buffer, const void *window)
 	}
 
 }
-#endif
 
 void AudioAnalyzeFFT1024::update(void)
 {
@@ -63,8 +61,6 @@ void AudioAnalyzeFFT1024::update(void)
 
 	block = receiveReadOnly();
 	if (!block) return;
-
-#if defined(__ARM_ARCH_7EM__)
 	switch (state) {
 	case 0:
 		blocklist[0] = block;
@@ -126,9 +122,7 @@ void AudioAnalyzeFFT1024::update(void)
 		state = 4;
 		break;
 	}
-#else
-	release(block);
-#endif
+
 }
 
 

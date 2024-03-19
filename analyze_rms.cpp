@@ -36,7 +36,7 @@ void AudioAnalyzeRMS::update(void)
 		count++;
 		return;
 	}
-#if defined(__ARM_ARCH_7EM__)
+
 	uint32_t *p = (uint32_t *)(block->data);
 	uint32_t *end = p + AUDIO_BLOCK_SAMPLES/2;
 	int64_t sum = accum;
@@ -52,17 +52,7 @@ void AudioAnalyzeRMS::update(void)
 	} while (p < end);
 	accum = sum;
 	count++;
-#else
-	int16_t *p = block->data;
-	int16_t *end = p + AUDIO_BLOCK_SAMPLES;
-	int64_t sum = accum;
-	do {
-		int32_t n = *p++;
-		sum += n * n;
-	} while (p < end);
-	accum = sum;
-	count++;
-#endif
+
 	release(block);
 }
 

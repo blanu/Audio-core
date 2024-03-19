@@ -62,7 +62,7 @@ void AudioAnalyzeFFT256::update(void)
 
 	block = receiveReadOnly();
 	if (!block) return;
-#if AUDIO_BLOCK_SAMPLES == 128 && defined (__ARM_ARCH_7EM__)
+#if AUDIO_BLOCK_SAMPLES == 128
 	if (!prevblock) {
 		prevblock = block;
 		return;
