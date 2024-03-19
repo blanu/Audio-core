@@ -1,26 +1,19 @@
 {
   "name": "Audio",
   "frameworks": "Arduino",
-  "platforms": "Teensy",
   "keywords": "sound, audio, FFT, filter, effect",
-  "description": "Teensy Audio Library",
-  "url": "http://www.pjrc.com/teensy/td_libs_Audio.html",
+  "description": "Teensy Audio Library, platform-neutral core",
+  "url": "https://blog.blacklightunicorn.com",
   "version": "1.3",
-  "export": {
-    "exclude": [
-      "gui",
-      "extras"
-    ]
-  },
   "authors":
   {
-    "name": "Paul Stoffregen",
+    "name": "Blacklight Unicorn",
     "maintainer": true
   },
   "repository":
   {
     "type": "git",
-    "url": "https://github.com/PaulStoffregen/Audio"
+    "url": "https://github.com/blanu/Audio-core"
   },
   "dependencies":
   {
