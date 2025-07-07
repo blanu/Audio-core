@@ -28,6 +28,7 @@
 #define audio_spi_interrupt_h_
 
 #include <Arduino.h>
+#include <SPI.h>
 #include <AudioPlatform.h>
 
 static inline void AudioStartUsingSPI(void) __attribute__((always_inline, unused));
