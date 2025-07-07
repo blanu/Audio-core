@@ -48,7 +48,7 @@ public:
 	virtual void update(void);
 private:
 	audio_block_t *inputQueueArray[1];
-	audio_block_t * volatile queue[MAX_BUFFERS];
+	audio_block_t * volatile queue[MAX_BUFFERS_COUNT];
 	audio_block_t *userblock;
 	volatile uint8_t head, tail, enabled;
 };

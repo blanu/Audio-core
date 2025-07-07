@@ -35,7 +35,7 @@ int AudioRecordQueue::available(void)
 	h = head;
 	t = tail;
 	if (h >= t) return h - t;
-	return MAX_BUFFERS + h - t;
+	return MAX_BUFFERS_COUNT + h - t;
 }
 
 void AudioRecordQueue::clear(void)
@@ -48,7 +48,7 @@ void AudioRecordQueue::clear(void)
 	}
 	t = tail;
 	while (t != head) {
-		if (++t >= MAX_BUFFERS) t = 0;
+		if (++t >= MAX_BUFFERS_COUNT) t = 0;
 		release(queue[t]);
 	}
 	tail = t;
@@ -61,7 +61,7 @@ int16_t * AudioRecordQueue::readBuffer(void)
 	if (userblock) return NULL;
 	t = tail;
 	if (t == head) return NULL;
-	if (++t >= MAX_BUFFERS) t = 0;
+	if (++t >= MAX_BUFFERS_COUNT) t = 0;
 	userblock = queue[t];
 	tail = t;
 	return userblock->data;
@@ -86,7 +86,7 @@ void AudioRecordQueue::update(void)
 		return;
 	}
 	h = head + 1;
-	if (h >= MAX_BUFFERS) h = 0;
+	if (h >= MAX_BUFFERS_COUNT) h = 0;
 	if (h == tail) {
 		release(block);
 	} else {
