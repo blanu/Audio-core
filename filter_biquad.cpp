@@ -100,18 +100,3 @@ void AudioFilterBiquad::setCoefficients(uint32_t stage, const int *coefficients)
 	*dest   &= 0x80000000;
 	__enable_irq();
 }
-
-#elif defined(KINETISL)
-
-void AudioFilterBiquad::update(void)
-{
-        audio_block_t *block;
-
-	block = receiveReadOnly();
-	if (block) release(block);
-}
-
-void AudioFilterBiquad::setCoefficients(uint32_t stage, const int *coefficients)
-{
-}
-
