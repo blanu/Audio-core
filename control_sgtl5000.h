@@ -27,7 +27,8 @@
 #ifndef control_sgtl5000_h_
 #define control_sgtl5000_h_
 
-#include "AudioPlatform.h"
+#include <AudioPlatform.h>
+#include "AudioControl.h"
 
 // SGTL5000-specific defines for headphones
 #define AUDIO_HEADPHONE_DAC 0
