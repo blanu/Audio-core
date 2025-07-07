@@ -27,6 +27,7 @@
 #ifndef play_sd_wav_h_
 #define play_sd_wav_h_
 
+#include <SD.h>
 #include "AudioPlatform.h"
 
 class AudioPlaySdWav : public AudioStream
