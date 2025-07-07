@@ -369,4 +369,6 @@ static inline int32_t FRACMUL_SHL(int32_t x, int32_t y, int z)
     return t;
 }
 
-#endif
+#endif // (__ARM_ARCH_7EM__) || defined(KINETISK) || defined(__SAMD51__)
+
+#endif // dspinst_h_
